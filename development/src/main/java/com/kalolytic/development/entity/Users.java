@@ -18,7 +18,6 @@ public class Users {
 
 
     @NotBlank
-
     private String username;
 
     @NotBlank

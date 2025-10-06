@@ -4,6 +4,7 @@ import com.kalolytic.development.Repository.UserRepository;
 import com.kalolytic.development.entity.Users;
 import com.kalolytic.development.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -62,10 +63,12 @@ public class UserService {
     public void deleteAllUser(){
         userRepo.deleteAll();
     }
-
+    @Cacheable("users")
     public List<Users> getAllUser() {
         return userRepo.findAll();
     }
+
+    @Cacheable("users")
     public Users getUserById(int id){
         Optional<Users> user=userRepo.findById(id);
         return user.orElse(null);

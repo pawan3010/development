@@ -38,6 +38,7 @@ public class Employees {
     @JsonBackReference
     private Department department;
 
+
     public Long getId() {
         return id;
     }
@@ -45,7 +46,6 @@ public class Employees {
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
